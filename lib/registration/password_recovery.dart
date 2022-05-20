@@ -1,9 +1,17 @@
 // ignore_for_file: use_key_in_widget_constructors, avoid_print
 
 
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:coffee_shop/registration/user_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 
+import '../constant/flatbuton.dart';
+import '../constant/logo.dart';
+import '../constant/styles.dart';
+import '../constant/txtbutton.dart';
 import 'log_in_screen.dart';
 
 class PasswordRecovery extends StatefulWidget {

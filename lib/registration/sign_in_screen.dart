@@ -1,6 +1,18 @@
 // ignore_for_file: avoid_print, use_key_in_widget_constructors, prefer_typing_uninitialized_variables
 
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../constant/flatbuton.dart';
+import '../constant/loading.dart';
+import '../constant/logo.dart';
+import '../constant/styles.dart';
+import '../constant/texfield.dart';
+import '../constant/txtbutton.dart';
+import '../home_page.dart';
+import 'log_in_screen.dart';
 
 class NameValidator{
   static String? nameVal(String value){
@@ -221,11 +233,11 @@ class _SignInScreenState extends State<SignInScreen> {
                 if (email == 'admin@admin1.com') {
                   Navigator.of(context).popUntil((route) => route.isFirst);
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const Category()));
+                      builder: (context) =>  MyHomePage()));
                 } else {
                   Navigator.of(context).popUntil((route) => route.isFirst);
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const NavigationScreen()));
+                      builder: (context) =>  MyHomePage()));
                 }
               } else {
                 print("Sign Up Faild");

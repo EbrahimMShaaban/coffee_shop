@@ -2,11 +2,17 @@
 
 
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:coffee_shop/home_page.dart';
 import 'package:coffee_shop/registration/password_recovery.dart';
+import 'package:coffee_shop/registration/sign_in_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../constant/flatbuton.dart';
 import '../constant/loading.dart';
+import '../constant/logo.dart';
+import '../constant/styles.dart';
 import '../constant/texfield.dart';
 import '../constant/txtbutton.dart';
 
@@ -185,12 +191,12 @@ class _LogInScreenState extends State<LogInScreen> {
     if(user!= null && uid == 'DiSPLUCmVadcMDhjGsYJ5kvhvLQ2' ){
       Navigator.of(context).popUntil((route) => route.isFirst);
       Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (context)=>const Category()));
+          .pushReplacement(MaterialPageRoute(builder: (context)=> MyHomePage()));
     }
     else if(user != null){
       Navigator.of(context).popUntil((route) => route.isFirst);
       await  Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => const NavigationScreen()));
+          builder: (context) =>  MyHomePage()));
     }
   }
 }
