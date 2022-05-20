@@ -17,7 +17,7 @@ class Buton extends StatelessWidget {
           width: sizeFromWidth(context, 10),
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: purple,
+            color: brownheigth,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Text(

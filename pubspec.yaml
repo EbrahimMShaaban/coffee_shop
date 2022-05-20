@@ -43,6 +43,7 @@ dependencies:
   awesome_dialog:
   provider:
   google_sign_in:
+  animated_splash_screen:
 
 
 

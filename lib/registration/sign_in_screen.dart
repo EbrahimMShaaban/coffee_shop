@@ -17,9 +17,9 @@ import 'log_in_screen.dart';
 class NameValidator{
   static String? nameVal(String value){
        if (value.isEmpty) {
-        return 'برجاءادخال الاسم';
+        return 'enter your name please';
       } else if (value.length < 3) {
-        return 'يجب أن يتكون الاسم من 3 أحرف على الاقل';
+        return 'name must contain 3 letters at least';
       }
        return null;
   }
@@ -83,10 +83,8 @@ class _SignInScreenState extends State<SignInScreen> {
                   context: context,
                   title: "Error",
                   dialogType: DialogType.ERROR,
-                  body: const Directionality(
-                      textDirection: TextDirection.rtl,
-                      child: Text(
-                          "كلمة المرور ضعيفة يجب ان تتكون علي الاقل من ستة ارقام او حروف")))
+                  body: const  Text(
+                          "weak password >> it's contain capital & small letters and numbers"))
               .show();
         } else if (e.code == 'email-already-in-use') {
           Navigator.of(context).pop();
@@ -95,7 +93,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   title: "Error",
                   dialogType: DialogType.ERROR,
                   body: const Text(
-                      "البريد الالكتروني موجود بالفعل ، الرجاء ادخال بريد اخر"))
+                      "email-already-in-use...enter another one please"))
               .show();
         }
       } catch (e) {
@@ -122,7 +120,7 @@ class _SignInScreenState extends State<SignInScreen> {
           ),
           Center(
               child: Text(
-            'تسجيل جديد',
+            'New Account',
             style: labelStyle,
           )),
           const SizedBox(
@@ -136,8 +134,8 @@ class _SignInScreenState extends State<SignInScreen> {
                   onChanged: (val) {
                    name = val;
                   },
-                  hint: "ادخل اسمك",
-                  label: " الاسم ",
+                  hint: "enter your name",
+                  label: "Name ",
                   scure: false,
                   validator: (value){
                    name = value;
@@ -156,8 +154,8 @@ class _SignInScreenState extends State<SignInScreen> {
                   onChanged: (val) {
                 email = val;
                   },
-                  hint: "ادخل البريد الالكتروني....",
-                  label: "البريد الالكتروني ",
+                  hint: "enter e-mail",
+                  label: "E-Mail ",
                   scure: false,
                   validator: (value) {
                     email = value;
@@ -170,8 +168,8 @@ class _SignInScreenState extends State<SignInScreen> {
                   onChanged: (val) {
                     password = val;
                   },
-                  hint: "ادخل كلمة مرور",
-                  label: "كلمة المرور ",
+                  hint: "enter password",
+                  label: "password",
                   scure: true,
                   validator: (value) {
                     password = value;
@@ -183,17 +181,17 @@ class _SignInScreenState extends State<SignInScreen> {
                   onChanged: (val) {
                    password2 = val;
                   },
-                  hint: "أكد كلمة مرورك",
-                  label: "تأكيد كلمة المرور ",
+                  hint: "Retype the password",
+                  label: "confirm password",
                   scure: true,
                   validator:
                       (value) {
                         password2 = value;
                         if (value.isEmpty) {
-                          return " الرجاء إعادة كتابة كلمة المرور";
+                          return " Retype the password please";
                         }
                         else if (value != password) {
-                          return 'كلمة المرور غير متطابقة';
+                          return 'Password does not match';
                         }
 
                   },
@@ -203,7 +201,7 @@ class _SignInScreenState extends State<SignInScreen> {
           ),
           const SizedBox(height: 20),
           Buton(
-            'تسجيل',
+            'confirm',
             onTap: () async {
               print(name);
               print(email);
@@ -223,22 +221,12 @@ class _SignInScreenState extends State<SignInScreen> {
                   "email": email,
                   "userid": FirebaseAuth.instance.currentUser!.uid,
                 });
-                // await FirebaseFirestore.instance
-                //     .collection('books')
-                //     .doc(widget.id)
-                //     .collection('comments')
-                //     .add({
-                //   "username": name,
-                // });
-                if (email == 'admin@admin1.com') {
+
+
                   Navigator.of(context).popUntil((route) => route.isFirst);
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) =>  MyHomePage()));
-                } else {
-                  Navigator.of(context).popUntil((route) => route.isFirst);
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) =>  MyHomePage()));
-                }
+
               } else {
                 print("Sign Up Faild");
               }
@@ -247,17 +235,19 @@ class _SignInScreenState extends State<SignInScreen> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
+
             children: [
-              Textbuton('سجل دخول', onTap: () {
+              Text(
+              'Do you already have an account?',
+              style: hintStyle,
+            ),
+              Textbuton('log in', onTap: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => const LogInScreen()));
               }),
-              Text(
-                'هل لديك حساب بالفعل ؟',
-                style: hintStyle,
-              ),
+
             ],
           ),
         ],

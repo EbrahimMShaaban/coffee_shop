@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: const EdgeInsets.only(right: 45.0),
               child: Container(
-                child: Text(
+                child: const Text(
                   'Let\'s select the best taste for your next coffee break!',
                   style: TextStyle(
                       fontFamily: 'nunito',

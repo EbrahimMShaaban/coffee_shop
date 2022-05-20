@@ -41,23 +41,23 @@ class _LogInScreenState extends State<LogInScreen> {
           Navigator.of(context).pop();
           AwesomeDialog(
               context: context,
-              title: "خطأ",
-              body: const Text("لا يوجد حساب لهذا البريد الالكتروني"))
+              title: "Error",
+              body: const Text("this account dosen\'t exist"))
             .show();
         } else if (e.code == 'wrong-password') {
           Navigator.of(context).pop();
           AwesomeDialog(
               context: context,
-              title: "خطأ",
-              body: const Text("كلمة المرور خطأ"))
+              title: "Error",
+              body: const Text("wrong password"))
             .show();
         }
         else if (e.code == 'invalid-email'){
           Navigator.of(context).pop();
           AwesomeDialog(
               context: context,
-              title: "خطأ",
-              body: const Text("تم ادخال الايميل بشكل خاطيء"))
+              title: "Error",
+              body: const Text("The email was entered incorrectly"))
               .show();
         }
       }
@@ -85,8 +85,8 @@ class _LogInScreenState extends State<LogInScreen> {
       ),
       Center(
           child: Text(
-            'تسجيل الدخول',
-           // style: labelStyle,
+            'Login',
+            style: labelStyle,
           )),
             const SizedBox(
         height: 20,
@@ -99,19 +99,19 @@ class _LogInScreenState extends State<LogInScreen> {
                 onChanged: (val) {
                   email = val;
                 },
-                hint: 'ادخل البريد الالكتروني',
-                label: 'البريد الالكتروني',
+                hint: 'enter e-mail',
+                label: 'E-mail',
                 scure: false,
                 validator: (value) {
                   email = value;
                   if (value!.isEmpty) {
-                    return 'الرجاءإدخال البريد الالكتروني ';
+                    return 'enter your e-mail please ';
                   }
                   if(!value.toString().contains('@')){
-                    return ' الرجاء ادخال البريد الالكتروني بشكل صحيح يجب ان يحتوي @';
+                    return ' Please enter a valid e-mail, it must contain @';
                   }
                   else if(!value.toString().contains('.com')){
-                    return 'الرجاء ادخال البريد الالكتروني بشكل صحيح يجب ان مثل user@mail.com';
+                    return 'Please enter a valid email. It should be like user@mail.com';
                   }
                  // else if(!value.toString().contains('gmail')){
                  //    return 'الرجاء ادخال البريد الالكتروني بشكل صحيح يجب ان يحتوي  gmail or mail or yahoo';
@@ -129,13 +129,13 @@ class _LogInScreenState extends State<LogInScreen> {
                 onChanged: (val) {
                   password = val;
                 },
-                hint: 'ادخل كلمة المرور',
-                label: 'كلمة المرور',
+                hint: 'enter password',
+                label: 'password',
                 scure: true,
                 validator: (value) {
                   password = value;
                   if (value!.isEmpty) {
-                    return 'الرجاءإدخال كلمة المرور ';
+                    return 'enter your password please ';
                   }
                 },
 
@@ -143,11 +143,11 @@ class _LogInScreenState extends State<LogInScreen> {
             ],
           )),
       Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Textbuton('هل نسيت كلمة المرور', onTap: () {
+            Textbuton('forget password ?', onTap: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -161,24 +161,25 @@ class _LogInScreenState extends State<LogInScreen> {
       ),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        //crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          Text(
+            'Don\'t have an account?',
+            style: hintStyle,
+          ),
+          SizedBox(
+            height: sizeFromHeight(context, 15),
+          ),
           Textbuton(
-            'إنشاء حساب',
+            'create account',
             onTap: () {
               Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context) => SignInScreen()));
             },
           ),
-          SizedBox(
-            height: sizeFromHeight(context, 15),
-          ),
-          Text(
-            'ليس لديك حساب ؟',
-            style: hintStyle,
-          ),
         ],
       ),
-      Buton("تسجيل دخول", onTap: ()async {
+      Buton("login", onTap: ()async {
              await loginNavigate(context);
             },),
         ],
@@ -187,13 +188,8 @@ class _LogInScreenState extends State<LogInScreen> {
   }
   loginNavigate(context)async{
     var user = await signIn();
-    var uid= FirebaseAuth.instance.currentUser!.uid;
-    if(user!= null && uid == 'DiSPLUCmVadcMDhjGsYJ5kvhvLQ2' ){
-      Navigator.of(context).popUntil((route) => route.isFirst);
-      Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (context)=> MyHomePage()));
-    }
-    else if(user != null){
+
+     if(user != null){
       Navigator.of(context).popUntil((route) => route.isFirst);
       await  Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) =>  MyHomePage()));

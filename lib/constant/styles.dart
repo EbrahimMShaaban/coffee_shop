@@ -7,10 +7,19 @@ const Color purple = Color(0xffb39ddb);
 const Color clearGray = Color(0xffc4c4c4);
 const Color gray = Color(0xFF8a8989);
 const Color white = Color(0xFFfafafa);
-const Color white2 = Color(0xfff1f1f1);
+const Color white2 = Color(0xFFB0AAA7);
 const Color black = Color(0xFF09090a);
 const Color red= Color(0xffaf2e2e);
 const Color red2= Color(0xffcc6b6b);
+
+const Color brownheigth=    Color(0xFF473D3A);
+const Color brownlow=  Color(0xFFCEC7C4);
+const Color gold=  Color(0xFFDAB68C);
+const Color blackgreen=  Color(0xFF3A4742);
+
+
+
+
 const LinearGradient redGradient = LinearGradient(
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
@@ -28,42 +37,37 @@ const LinearGradient blueGradient = LinearGradient(
 
 
 
-TextStyle labelStyle = GoogleFonts.tajawal(
-    textStyle: const  TextStyle(
-        fontSize: 28, fontWeight: FontWeight.w600, color: gray, height: .2));
-TextStyle labelStyle2 = GoogleFonts.tajawal(
-    textStyle: const TextStyle(
+TextStyle labelStyle =
+     TextStyle(
+        fontSize: 28, fontWeight: FontWeight.w600, color: gray, height: .2);
+TextStyle labelStyle2 =  TextStyle(
         fontSize: 22,
         fontWeight: FontWeight.w600,
         color: gray,
-        height: 1.5));
-TextStyle hintStyle = GoogleFonts.tajawal(
-    textStyle: const TextStyle(
+        height: 1.5);
+TextStyle hintStyle = TextStyle(
         fontSize: 22,
         fontWeight: FontWeight.w400,
-        color: clearGray,
-        height: 1.5));
-TextStyle buttonStyle = GoogleFonts.tajawal(
-    textStyle: const TextStyle(
-        fontSize: 20, fontWeight: FontWeight.bold, color: white, height: 1.5));
-TextStyle buttonStyle2 = GoogleFonts.tajawal(
-    textStyle: const TextStyle(
-        fontSize: 20, fontWeight: FontWeight.bold, color: clearGray, height: 1.5));
-TextStyle appbarStyle = GoogleFonts.tajawal(
-    textStyle:const TextStyle(
-        fontSize: 24, fontWeight: FontWeight.w600, color: gray,));
-TextStyle buttonTextStyle = GoogleFonts.tajawal(
-    textStyle: const TextStyle(
-        fontSize: 20, fontWeight: FontWeight.bold, color: purple, height: 1.5));
-TextStyle textstyles = GoogleFonts.tajawal(
-    textStyle:const TextStyle(
-        fontSize: 15, fontWeight: FontWeight.bold, color: gray, height: 1.5));
-TextStyle hintStyle2 = GoogleFonts.tajawal(
-    textStyle: const TextStyle(
+        color: gold,
+        height: 1.5);
+TextStyle buttonStyle =  TextStyle(
+        fontSize: 20, fontWeight: FontWeight.bold, color: white, height: 1.5);
+
+TextStyle buttonStyle2 = TextStyle(
+        fontSize: 20, fontWeight: FontWeight.bold, color: clearGray, height: 1.5);
+
+TextStyle appbarStyle =  TextStyle(
+        fontSize: 24, fontWeight: FontWeight.w600, color: gray,);
+TextStyle buttonTextStyle =  TextStyle(
+        fontSize: 20, fontWeight: FontWeight.bold, color: purple, height: 1.5);
+TextStyle textstyles =  TextStyle(
+        fontSize: 15, fontWeight: FontWeight.bold, color: gray, height: 1.5);
+TextStyle hintStyle2 =  TextStyle(
         fontSize: 10,
         fontWeight: FontWeight.w400,
         color: clearGray,
-        height: 1.5));
+        height: 1.5);
+
 double sizeFromHeight(BuildContext context, double fraction,
     {bool hasAppBar = true}) {
   final screenHeight = MediaQuery.of(context).size.height;
